@@ -73,6 +73,11 @@ app.filters = {
       key: 'recent',
       argOne: 'recent'
     },{
+      title: 'Albums',
+      path: 'music/all-albums',
+      key: 'all-albums',
+      argOne: 'all-albums'
+    },{
       title: 'Recently Added',
       path: 'music/recently-added',
       key: 'recently-added',

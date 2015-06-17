@@ -46,6 +46,9 @@ app.MusicView = Backbone.View.extend({
       case 'recently-added':
         this.recentAdded();
         break;
+	  case 'all-albums':
+        this.allAlbumsList();
+        break;
       case 'genres':
         if($list.length > 0){
           this.genre(this.model.id);
@@ -161,7 +164,28 @@ app.MusicView = Backbone.View.extend({
     return this;
   },
 
+  /**
+   * Render Albums
+   */
+  allAlbumsList: function(){
 
+    var self = this,
+      $content = $('#content');
+
+    app.cached.allAlbumsListCollection = new app.AlbumXbmcCollection();
+    app.cached.allAlbumsListCollection.fetch({"success": function(allAlbums){
+
+      // render
+      app.cached.allAlbumsListView = new app.SmallAlbumsList({model: allAlbums, className:'album-list-landing'});
+      $content.html(app.cached.allAlbumsListView.render().el);
+
+      $content.prepend(app.image.getFanartFromCollection(allAlbums));
+
+    }});
+
+  },
+  
+  
   /**
    * Render list of genres
    */
