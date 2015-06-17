@@ -81,7 +81,7 @@ app.AlbumXbmcCollection = Backbone.Collection.extend({
   //collection params
   arg1: app.fields.get('album'), //properties
   arg2: {"start": 0, "end": 15000}, //count
-  arg3: {"method": "dateadded", "order": "descending"},
+  arg3: {"method": "album"},
   //method/params
   methods: {
     read:  ['AudioLibrary.GetAlbums', 'arg1', 'arg2', 'arg3']
